@@ -1,4 +1,4 @@
-// Program to print a solid rectangle pattern
+// Program to print a Left Triangle pattern
 // Input: n = 5
 // Output:
 // *
