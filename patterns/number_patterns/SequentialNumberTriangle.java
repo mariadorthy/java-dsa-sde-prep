@@ -1,4 +1,4 @@
-// Program to print a Number Square pattern
+// Program to print a Sequential Number Triangle pattern
 // Input: n = 5
 // Output:
 // 1 
