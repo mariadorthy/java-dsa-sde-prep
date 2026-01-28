@@ -7,6 +7,8 @@
 // ****
 // ****
 
+package patterns.basics;
+
 public class SolidSquare{
     public static void main(String[] args){
         int n=5;
