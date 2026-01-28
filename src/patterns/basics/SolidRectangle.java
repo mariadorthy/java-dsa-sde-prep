@@ -5,6 +5,8 @@
 // ******
 // ******
 
+package patterns.basics;
+
 public class SolidRectangle {
     public static void main(String[] args){
         int n=6;
