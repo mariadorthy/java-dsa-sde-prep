@@ -7,7 +7,7 @@
 // ****
 // *****
 
-package Left_aligned;
+package patterns.basics.Left_aligned;
 
 public class LeftTriangle {
     public static void main(String[] args){
