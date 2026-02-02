@@ -1,11 +1,11 @@
 // Program to print a solid square pattern
 // Input: n = 5
 // Output:
-// ****
-// ****
-// ****
-// ****
-// ****
+// *****
+// *****
+// *****
+// *****
+// *****
 
 package patterns.basics;
 
