@@ -1,11 +1,11 @@
 // Program to print a Inverted Repeated Alphabet Triangle pattern
 // Input: n = 5
 // Output:
-// A 
-// B B
-// C C C
-// D D D D
-// E E E E E
+//A A A A A 
+//B B B B 
+//C C C 
+//D D 
+//E 
 
 package patterns.alphabet_patterns;
 
