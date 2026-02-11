@@ -1,93 +1,85 @@
 // Program - Variables
 // Output:
-// Age:25
-// Year:1997
-// X:5
-// Population:8000000000
-// Price:1111.1
-// PI:3.14
-// Grade:A
-// Flag:true
-// Addition:31
-// Subtraction:-1
-// Multiplication:900
-// Division:1
-
-
-
-//import java.io.*;
+//----------------Global Variable in Program----------------
+//x: 5
+//----------------Local Variable is executed now----------------
+//This x is inside LocalVariable Function: 15
+//----------------Instance Variable is executed now----------------
+//Default Value Printed: 10
+//Person 1's age: 25
+//Person 2's age: 36
+//----------------Static variable is executed now----------------
+//Default Value(before assignment): 0
+//Person id from p1: 1
+//Person id from p2: 1
+//----------------Final variable is executed now----------------
+//Final Variable:4
+//----------------Local VS Instance variable is executed now----------------
+//Age: 6
+//Age in instance variable: 10
+//----------------Scope of variable is executed now----------------
 
 package basics;
+class Person{
+	int age=10; // this is instance variable 
+	static int id;
+	public void LocalvsInstanceVariable() {
+		int age=6;
+		System.out.println("Age: "+age);
+		System.out.println("Age in instance variable: "+this.age);
+	}
+}
+public class Variables{
+	static int x=5;  // // class-level static variable (Java has no global variables)
+	public static void LocalVariable() {
+		int x=15; //shadows the class-level variable
+		System.out.println("This x is inside LocalVariable Function: "+x);
+	}
+	public static void InstanceVariable() {
+		Person p1=new Person();
+		Person p2=new Person();
+		System.out.println("Default Value Printed: "+p1.age); // default value 
+		p1.age=25;
+		p2.age=36;
+		System.out.println("Person 1's age: "+p1.age);
+		System.out.println("Person 2's age: "+p2.age);
+	}
+	public static void StaticVariable() {
+		Person p1 = new Person();
+		Person p2= new Person();
+		System.out.println("Default Value(before assignment): " + p1.id); // Default Value 
+		p1.id=1;
+		System.out.println("Person id from p1: " + p1.id);
+		System.out.println("Person id from p2: " + p2.id); // only 1 copy exists
+	}
+	public static void FinalVariable() {
+		final int a=4;
+		System.out.println("Final Variable:"+a);
+//		a=10; // this shows error that - final variable cannot be assigned 
+	}
+	public static void ScopeofVariable() {
+//		Block of code - Scope of Variable
+		{
+			int temp=5;
+		}
+//	 	System.out.println(temp); // shows error
+	}
 
-public class Variables {
-    
 	public static void main(String[] args) {
-    	System.out.println("Calling Variable Initialization Declaration method");
-    	VariableInitializationDeclaration();
-    	
-    }
-    public static void VariableInitializationDeclaration(){
-       
-        // -----------------------------
-        // 1. Declaration vs Initialization
-        // -----------------------------
-        int x;          // declaration
-        x = 10;         // initialization later
-        System.out.println("x = " + x);
-
-        // -----------------------------
-        // 2. Initialized later (valid)
-        // -----------------------------
-        int a;
-        a = 5;          // initialized before use
-        System.out.println("a = " + a);
-
-        // -----------------------------
-        // 3. Uninitialized local variable example
-        // NOTE: Uncommenting this code will cause a compile-time error
-        // because local variables in Java must be initialized before use.
-        // -----------------------------
-        /*
-        int b;
-        System.out.println(b); // compile-time error
-        */
-
-        // -----------------------------
-        // 4. Fixed version
-        // -----------------------------
-        int b = 0;
-        System.out.println("b = " + b);
-
-        // -----------------------------
-        // 5. Declare & Initialize Variables of different Primitive types
-        // -----------------------------
-        // java 8 - primitive types 
-        byte  age = 25; // 8 bits 
-        short year = 1997;  // 16 bits 
-        int dob = 5;  // 32 bits
-        long population = 8000000000L; // 64 bits 
-        float price = 1111.1f;
-        double pi = 3.14;
-        char grade ='A';
-        boolean flag = true; // can be true or false
-        // print their values.
-        System.out.println("Age:"+age);
-        System.out.println("Year:"+year);
-        System.out.println("DOB:"+dob);
-        System.out.println("Population:"+population);
-        System.out.println("Price:"+price);
-        System.out.println("PI:"+pi);
-        System.out.println("Grade:"+grade);
-        System.out.println("Flag:"+flag);
-
-        // -----------------------------
-        // 6. Declare multiple variables of the same type in a single statement and use them in calculations.
-        // ----------------------------- 
-        int p=18,q=6, r=10;
-        System.out.println("Addition:"+(p+q+r));
-        System.out.println("Subtraction:"+(p-q));
-        System.out.println("Multiplication:"+(p*q*r));
-        System.out.println("Division:"+(p/q));
-    }
-    
+		System.out.println("----------------Global Variable in Program----------------");
+		System.out.println("x: "+x);
+		System.out.println("----------------Local Variable is executed now----------------");
+		LocalVariable();
+		System.out.println("----------------Instance Variable is executed now----------------");
+		InstanceVariable();
+		System.out.println("----------------Static variable is executed now----------------");
+		StaticVariable();
+		System.out.println("----------------Final variable is executed now----------------");
+		FinalVariable();
+		Person p=new Person();
+		System.out.println("----------------Local VS Instance variable is executed now----------------");
+		p.LocalvsInstanceVariable();
+		System.out.println("----------------Scope of variable is executed now----------------");
+		ScopeofVariable();		
+	}
 }
