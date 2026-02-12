@@ -21,7 +21,7 @@
 
 package basics;
 class Person{
-	int age=10; // this is instance variable 
+	int age=10; // belongs to each object 
 	static int id;
 	public void LocalvsInstanceVariable() {
 		int age=6;
@@ -31,10 +31,12 @@ class Person{
 }
 public class Variables{
 	static int x=5;  // // class-level static variable (Java has no global variables)
+	//local variable: declared inside method or block & is accessible only within that scope
 	public static void LocalVariable() {
 		int x=15; //shadows the class-level variable
 		System.out.println("This x is inside LocalVariable Function: "+x);
 	}
+	//instance variable: each object gets its own copy
 	public static void InstanceVariable() {
 		Person p1=new Person();
 		Person p2=new Person();
@@ -44,6 +46,7 @@ public class Variables{
 		System.out.println("Person 1's age: "+p1.age);
 		System.out.println("Person 2's age: "+p2.age);
 	}
+	//static variable: belongs to class and accessed via class name, one copy shared across objects
 	public static void StaticVariable() {
 		Person p1 = new Person();
 		Person p2= new Person();
@@ -52,6 +55,7 @@ public class Variables{
 		System.out.println("Person id from p1: " + p1.id);
 		System.out.println("Person id from p2: " + p2.id); // only 1 copy exists
 	}
+	//final variable: constant value 
 	public static void FinalVariable() {
 		final int a=4;
 		System.out.println("Final Variable:"+a);
@@ -66,7 +70,7 @@ public class Variables{
 	}
 
 	public static void main(String[] args) {
-		System.out.println("----------------Global Variable in Program----------------");
+		System.out.println("----------------Class Level Static Variable in Program----------------");
 		System.out.println("x: "+x);
 		System.out.println("----------------Local Variable is executed now----------------");
 		LocalVariable();
