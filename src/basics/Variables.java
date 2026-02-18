@@ -1,17 +1,19 @@
 // Program - Variables
 // Output:
-//----------------Global Variable in Program----------------
+//----------------Class Level Static Variable in Program----------------
 //x: 5
 //----------------Local Variable is executed now----------------
 //This x is inside LocalVariable Function: 15
 //----------------Instance Variable is executed now----------------
-//Default Value Printed: 10
+//Default Value Printed: 0
 //Person 1's age: 25
 //Person 2's age: 36
 //----------------Static variable is executed now----------------
-//Default Value(before assignment): 0
-//Person id from p1: 1
-//Person id from p2: 1
+//Initial value: 0
+//After Person.id = 10
+//Person.id: 10
+//After Person.id = 20
+//Person.id: 20
 //----------------Final variable is executed now----------------
 //Final Variable:4
 //----------------Local VS Instance variable is executed now----------------
@@ -21,7 +23,8 @@
 
 package basics;
 class Person{
-	int age=10; // belongs to each object 
+	int age=10; // belongs to each object
+	int x;
 	static int id;
 	public void LocalvsInstanceVariable() {
 		int age=6;
@@ -40,20 +43,23 @@ public class Variables{
 	public static void InstanceVariable() {
 		Person p1=new Person();
 		Person p2=new Person();
-		System.out.println("Default Value Printed: "+p1.age); // default value 
-		p1.age=25;
-		p2.age=36;
-		System.out.println("Person 1's age: "+p1.age);
-		System.out.println("Person 2's age: "+p2.age);
+		System.out.println("Default Value Printed: "+p1.x); // default value 
+		p1.x=25;
+		p2.x=36;
+		System.out.println("Person 1's age: "+p1.x);
+		System.out.println("Person 2's age: "+p2.x);
 	}
 	//static variable: belongs to class and accessed via class name, one copy shared across objects
 	public static void StaticVariable() {
-		Person p1 = new Person();
-		Person p2= new Person();
-		System.out.println("Default Value(before assignment): " + p1.id); // Default Value 
-		p1.id=1;
-		System.out.println("Person id from p1: " + p1.id);
-		System.out.println("Person id from p2: " + p2.id); // only 1 copy exists
+	    System.out.println("Initial value: " + Person.id);
+
+	    Person.id = 10;
+	    System.out.println("After Person.id = 10");
+	    System.out.println("Person.id: " + Person.id);
+
+	    Person.id = 20;
+	    System.out.println("After Person.id = 20");
+	    System.out.println("Person.id: " + Person.id);
 	}
 	//final variable: constant value 
 	public static void FinalVariable() {
