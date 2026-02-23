@@ -1,3 +1,19 @@
+// Program - Minimum Element of Array 
+// Output 
+//Enter the number: 
+//5
+//Enter
+//1
+//Enter
+//2
+//Enter
+//3
+//Enter
+//4
+//Enter
+//5
+//Min value of array: 1
+
 package arrays;
 
 import java.util.*;
