@@ -1,55 +1,54 @@
-// Program - Count positive, negative and zero element of Array 
-// Output 
-//Enter the number of elements in array: 
-//5
-//Enter: 
-//0
-//Enter: 
-//1
-//Enter: 
-//-1
-//Enter: 
-//-100
-//Enter: 
-//100
-//Positive: 2
-//Negative: 2
-//Zero: 1
+/* 
+Problem:
+Count positive, negative and zero's numbers in an integer array.
 
+Approach:
+Traverse the array once.
+Increment positiveCount, if its greater than 0.
+Increment negativeCount, if its lesser than 0.
+Else Increment zerosCount.
+
+Time Complexity: O(n) 
+Space Complexity: O(1)
+
+Example:
+Input: [0, -1, 1, -100, 100]
+Output: Positive: 2 Negative: 2	Zero: 1
+*/
 package arrays;
-
-import java.util.*;
 
 public class CountPositiveNegativeZeros {
 
-	public static void main(String[] args) {
-			Scanner sc=new Scanner(System.in);
-			System.out.println("Enter the number of elements in array: ");
-			int n=sc.nextInt();
-			if(n==0) {
-				System.out.println("Array is empty");
+	public static int[] countPositiveNegativeZeros(int[] arr){
+		if(arr == null || arr.length == 0) {
+			throw new IllegalArgumentException("Array must not be empty");
+		}
+		int positiveCount=0, negativeCount=0, zerosCount=0;
+		for(int num : arr) {
+			if(num>0) {
+				positiveCount++;
+			}
+			else if(num<0) {
+				negativeCount++;
 			}
 			else {
-				int[] arr=new int[n];
-				int positiveCount=0, negativeCount=0, zerosCount=0;
-				for(int i=0;i<n;i++) {
-					System.out.println("Enter: ");
-					arr[i]=sc.nextInt();
-					if(arr[i]>0) {
-						positiveCount++;
-					}
-					else if(arr[i]<0) {
-						negativeCount++;
-					}
-					else {
-						zerosCount++;
-					}
-				}
-				System.out.println("Positive: "+positiveCount);
-				System.out.println("Negative: "+negativeCount);
-				System.out.println("Zero: "+zerosCount);
+				zerosCount++;
 			}
-			sc.close();
+		}
+		return new int[] {positiveCount, negativeCount, zerosCount};
+	}
+	
+	public static void main(String[] args) {
+			int[] arr= {0, -1, 1, -100, 100};
+			try {
+				int[] result = countPositiveNegativeZeros(arr);
+				System.out.println("Positive: "+result[0]);
+				System.out.println("Negative: "+result[1]);
+				System.out.println("Zero: "+result[2]);
+			}
+			catch(IllegalArgumentException e) {
+				System.out.println(e.getMessage());
+			}
 	}
 
 }
