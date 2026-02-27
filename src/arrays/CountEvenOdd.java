@@ -1,50 +1,47 @@
-// Program - Count even and odd element of Array 
-// Output 
-//Enter the number of elements in array: 
-//5
-//Enter: 
-//12
-//Enter: 
-//43
-//Enter: 
-//65
-//Enter: 
-//88
-//Enter: 
-//97
-//Even: 2
-//Odd: 3
+/*
+Problem:
+Count even and odd numbers in an integer array.
 
+Approach:
+Traverse the array once.
+Check each element using modulo operator.
+Increment evenCount if divisible by 2, otherwise increment oddCount.
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+Example:
+Input: [12, 43, 65, 88, 97]
+Output: Even = 2, Odd = 3
+*/
 package arrays;
 
-import java.util.*;
-
 public class CountEvenOdd {
-
-	public static void main(String[] args) {
-		Scanner sc=new Scanner(System.in);
-		System.out.println("Enter the number of elements in array: ");
-		int n=sc.nextInt();
-		if(n==0) {
-			System.out.println("Array is empty");
+	
+	public static int[] countEvenOdd(int[] arr) {
+		int evenCount=0, oddCount=0;
+		if( arr == null || arr.length == 0) // always check null 1st  
+		{
+			throw new IllegalArgumentException("Array must not be empty");
 		}
-		else {
-			int[] arr=new int[n];
-			int evenCount=0, oddCount=0;
-			for(int i=0;i<n;i++) {
-				System.out.println("Enter: ");
-				arr[i]=sc.nextInt();
-				if(arr[i]%2 == 0) {
-					evenCount++;
-				}
-				else {
-					oddCount++;
-				}
-			}
-			System.out.println("Even: "+evenCount);
-			System.out.println("Odd: "+oddCount);	
+		for(int num : arr) {
+			if(num%2 == 0) 
+				evenCount++;
+			else 
+				oddCount++;
 		}
-		sc.close();
+		return new int[] {evenCount, oddCount};
 	}
-
+	
+	public static void main(String[] args) {
+		int[] arr= {-2, -3, -4};
+		try {
+			int[] result = countEvenOdd(arr);
+			System.out.println("Even: "+result[0]);
+			System.out.println("Odd: "+result[1]);
+		}
+		catch(IllegalArgumentException e){
+			System.out.println(e.getMessage());
+		}		
+	}
 }
