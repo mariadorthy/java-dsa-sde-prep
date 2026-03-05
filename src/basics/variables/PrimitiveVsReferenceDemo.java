@@ -1,3 +1,9 @@
+/*
+ * File: PrimitiveVsReferenceDemo.java
+ * Package: basics.variables
+ * Purpose: Demonstrates differences between primitive variables and reference variables.
+ */
+
 /* 
  * Concept: Demonstrates difference between primitive variables and reference variables.
  *
