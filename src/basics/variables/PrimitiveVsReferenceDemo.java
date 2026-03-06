@@ -103,7 +103,7 @@ public class PrimitiveVsReferenceDemo {
 	
     public static void main(String[] args) {
 
-    	// 1. Primitive assignment copies the value
+    	// 1. Primitive value copy
         System.out.println("\n ───────────────Primitive Copy───────────────\n");
         int a = 10;
         int b = a; // Value Copy
@@ -117,20 +117,22 @@ public class PrimitiveVsReferenceDemo {
         System.out.println("a = " + a);
         System.out.println("b = " + b);
         
-        // 2. Reference copy
+     // 2. Reference copy (two variables referencing the same object)
         System.out.println("\n ───────────────Reference Copy───────────────\n");
         Person p1 = new Person("Alice");
         // p2 now references the SAME object as p1
         Person p2 = p1; // Reference Copy
         
         System.out.println("Reference values:");
+     // 5. Object identity demonstration using System.identityHashCode()
         System.out.println("p1 identity: " + System.identityHashCode(p1));
         System.out.println("p2 identity: " + System.identityHashCode(p2));
         System.out.println("p1.name = " + p1.name);
         System.out.println("p2.name = " + p2.name);
+     // 4. Reference equality check using ==
         System.out.println("p1 and p2 share same object: " + (p1 == p2)); // true because both references point to same object
         
-        // 3. Mutation through reference
+     // 3. Object mutation through shared reference
         System.out.println("\n ───────────────Object mutation through shared reference───────────────\n");
         p2.name = "Bob"; // mutating the shared object
 
@@ -138,7 +140,7 @@ public class PrimitiveVsReferenceDemo {
         System.out.println("p1.name = " + p1.name);
         System.out.println("p2.name = " + p2.name);
         
-	     // 4. Reference reassignment
+     // 6. Reference reassignment
         System.out.println("\n ───────────────Reference Reassignment───────────────\n");
 	     Person p3 = new Person("Charlie");
 	     Person p4 = p3; // both references now point to the SAME object
@@ -158,7 +160,7 @@ public class PrimitiveVsReferenceDemo {
 	     System.out.println("p3.name = " + p3.name);
 	     System.out.println("p4.name = " + p4.name);
 	     
-	     // 5. Null Reference 
+	  // 7. Null reference 
         System.out.println("\n ───────────────Null Reference───────────────\n");
 
 	     Person p = new Person("Eve");
@@ -168,17 +170,15 @@ public class PrimitiveVsReferenceDemo {
 
 	     System.out.println("p reference after null assignment: " + p);
 	     
-	     // 6. Object Without Reference
+	  // 8. Object creation without storing reference
         System.out.println("\n ───────────────Object Without Reference───────────────\n");
 
         System.out.println("Creating object without storing reference...");
         new Person("Temp"); // object created but no variable holds it
         System.out.println("Object created but no reference stored, eligible for GC.");
 
-	     // 7. Two Separate Objects
+     // 9. Two completely separate objects
         System.out.println("\n ───────────────Two Separate Objects───────────────\n");
-	     System.out.println("\nTwo separate objects demonstration:");
-
 	     Person p5 = new Person("Charlie");
 	     Person p6 = new Person("David");
 
@@ -186,7 +186,7 @@ public class PrimitiveVsReferenceDemo {
 	     System.out.println("p6 identity: " +System.identityHashCode(p6));
 	     System.out.println("p5 == p6 : " + (p5 == p6)); // false
 	     
-	     // 8. Multiple References 
+	  // 10. Multiple references pointing to the same object
 	     System.out.println("\n ───────────────Multiple References───────────────\n");
 	     Person a1 = new Person("Tom");
 	     Person a2 = a1;
@@ -198,3 +198,43 @@ public class PrimitiveVsReferenceDemo {
 	     System.out.println("a2 == a3 : " + (a2 == a3)); // true
     }
 }
+/* Execution Flow (Mental Model)
+
+Program Start
+
+Primitive Copy
+ ├─ a = 10 created
+ ├─ b = a → value copied
+ └─ modifying b does not affect a
+
+Reference Copy
+ ├─ Person("Alice") object created in heap
+ ├─ p1 stores reference to object
+ └─ p2 = p1 → both point to SAME object
+
+Object Mutation
+ └─ p2.name changed → affects p1 because both share object
+
+Reference Reassignment
+ ├─ p3 and p4 initially reference same object
+ ├─ new Person("David") created
+ └─ p4 now references new object while p3 keeps old one
+
+Null Reference
+ ├─ p references Person("Eve")
+ └─ p = null → object becomes eligible for GC
+
+Object Without Reference
+ └─ new Person("Temp") created with no reference → eligible for GC
+
+Separate Objects
+ ├─ p5 and p6 created separately
+ └─ different objects in heap
+
+Multiple References
+ ├─ a1 references object
+ ├─ a2 = a1
+ └─ a3 = a1 → all share same object
+
+Program End
+*/
