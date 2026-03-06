@@ -102,7 +102,7 @@ public class ScopeVsLifetimeDemo {
     }
 
 }
-/*
+/* Execution Flow (Mental Model)
 Program start
 
 main()
