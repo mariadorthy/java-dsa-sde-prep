@@ -1,135 +1,84 @@
 /*
  * File: VariableBasicsDemo.java
  * Package: basics.variables
- * Purpose: Demonstrates variable categories and basic variable operations.
+ * Purpose: Demonstrates basic concepts of variables in Java.
  */
+
 /*
- * Local Variable:
- * - Declared inside method or block.
- * - Exists only during method execution.
- * - Must be initialized before use.
- * 
- * Instance Variable:
- * - Declared inside a class but outside methods.
- * - Each object has its own copy.
- * - Default values assigned automatically.
- * 
- * Static Variable:
- * - Belongs to the class, not objects.
- * - Shared across all instances.
- * - Exists as long as the class is loaded.
- * 
- * Method Parameters:
- * - Variables that receive method arguments.
- * - Created when method is invoked.
- * - Destroyed when method returns.
- * 
- * Declaration vs Assignment vs Initialization
- * - Declaration introduces a variable name and type to the compiler. 
- * - Assignment gives a value to an already declared variable.
- * - Initialization performs declaration and assignment in one statement.
- * 
- * Type Compatibility
- * - A variable can only store values compatible with its declared type.
- * - Java allows widening conversions. (e.g., int → double)
- * - Reference types follow inheritance rules. (e.g., String → Object)
- * 
+ * Variable
+ * - A named memory location used to store data.
+ * - The value can change during program execution.
+ *
+ * Literal
+ * - A fixed value written directly in the code.
+ * - Examples: 10, 3.14, 'A', "Hello".
+ *
+ * Variable vs Literal
+ * - Literal is the actual value.
+ * - Variable stores the value in memory.
+ *
+ * Constant
+ * - A variable whose value cannot change after initialization.
+ * - Declared using the 'final' keyword.
+ *
  * Demonstrations in this program:
- * 1. Local variables
- * 2. Declaration 
- * 3. Assignment
- * 4. Initialization
- * 5. Type compatibility
- * 6. Instance variables
- * 7. Static variables
- * 8. Method parameters
- *  
+ * 1. Variable storing values
+ * 2. Literal vs Variable
+ * 3. Constant using final
+ *
 Output Example
------ Local Variable -----
-x = 10
+─────────────── Variable Storing Values ───────────────
+Age = 21
+Salary = 50000.5
+Updated Age = 22
 
------ Initialization -----
-y = 20
+─────────────── Literal vs Variable ───────────────
+Literal value = 100
+Variable value = 100
 
------ Type Compatibility -----
-double b = 5.0
-Object obj = Hello
-
------ Instance Variable -----
-Default age = 0
-Student age = 21
-
------ Static Variable -----
-School = ABC School
-
------ Method Parameter -----
-Parameter age = 25
- */
+─────────────── Constant (final variable) ───────────────
+PI = 3.14159
+*/
 
 package basics.variables;
-
-class Student {
-
-    // instance variable
-    int age;
-
-    // static variable
-    static String school = "ABC School";
-
-    void printAge(int paramAge) {  // parameter variable
-        System.out.println("Parameter age = " + paramAge);
-    }
-}
 
 public class VariableBasicsDemo {
 
     public static void main(String[] args) {
-    	// 1. Local Variable 
-        System.out.println("----- Local Variable -----");
 
-        // 2. Declaration
-        int x;
+        // 1. Variable Storing Values
+        System.out.println("─────────────── Variable Storing Values ───────────────");
 
-        // 3. Assignment
-        x = 10;
+        int age = 21;           // variable storing integer value
+        double salary = 50000.5; // variable storing decimal value
 
-        System.out.println("x = " + x);
+        System.out.println("Age = " + age);
+        System.out.println("Salary = " + salary);
 
-     // 4. Initialization 
-        System.out.println("\n----- Initialization -----");
+        // variable value can change
+        age = 22;
+        System.out.println("Updated Age = " + age);
 
-        int y = 20;  // declaration + assignment
-        System.out.println("y = " + y);
-        
-     // 5. Type Compatibility
-        System.out.println("\n----- Type Compatibility -----");
+        // 2. Literal vs Variable
+        System.out.println("\n─────────────── Literal vs Variable ───────────────");
 
-        int a = 5;
-        double b = a;  // widening conversion
-        System.out.println("double b = " + b);
+        System.out.println("Literal value = " + 100); // literal directly used
 
-        Object obj = "Hello";  // String -> Object
-        System.out.println("Object obj = " + obj);
+        int number = 100; // variable storing a literal
+        System.out.println("Variable value = " + number);
 
-     // 6. Instance Variable
-        System.out.println("\n----- Instance Variable -----");
+        // 3. Constant using final
+        System.out.println("\n─────────────── Constant (final variable) ───────────────");
 
-        Student s = new Student();
-        System.out.println("Default age = " + s.age);
-        s.age = 21;
-        System.out.println("Student age = " + s.age);
-        
-     // 7. Static Variable
-        System.out.println("\n----- Static Variable -----");
+        final double PI = 3.14159; // constant variable
 
-        System.out.println("School = " + Student.school);
-        
-     // 8. Method Parameter
-        System.out.println("\n----- Method Parameter -----");
+        System.out.println("PI = " + PI);
 
-        s.printAge(25);
+        // PI = 3.14;  // ❌ Compilation error: cannot change final variable
+    
     }
 }
+
 /*
 Execution Flow (Mental Model)
 
@@ -137,36 +86,21 @@ Program Start
 │
 ├─ main() method begins
 │
-├─ Local Variable Section
-│   ├─ declare variable x
-│   ├─ assign value 10
-│   └─ print x
+├─ Variable Storing Values Section
+│   ├─ declare variable age = 21
+│   ├─ declare variable salary = 50000.5
+│   ├─ print both values
+│   ├─ change age value to 22
+│   └─ print updated value
 │
-├─ Initialization Section
-│   ├─ declare and initialize y = 20
-│   └─ print y
+├─ Literal vs Variable Section
+│   ├─ print literal value 100 directly
+│   ├─ store literal 100 in variable number
+│   └─ print variable value
 │
-├─ Type Compatibility Section
-│   ├─ int a created
-│   ├─ assign a to double b (widening conversion)
-│   ├─ assign String to Object reference
-│   └─ print results
-│
-├─ Instance Variable Section
-│   ├─ create Student object
-│   ├─ object allocated in heap
-│   ├─ reference stored in variable s
-│   ├─ set instance field age = 21
-│   └─ print age
-│
-├─ Static Variable Section
-│   ├─ access class-level variable Student.school
-│   └─ print value
-│
-├─ Method Parameter Section
-│   ├─ call printAge(25)
-│   ├─ parameter paramAge created
-│   └─ print parameter value
+├─ Constant Section
+│   ├─ declare constant PI using final keyword
+│   └─ print PI value
 │
 └─ Program End
 */
